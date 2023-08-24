@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BTLNetCore6.0.props" />
+</Project>

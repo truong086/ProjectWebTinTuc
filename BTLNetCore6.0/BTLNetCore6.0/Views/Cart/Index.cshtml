@@ -1,0 +1,288 @@
+﻿@model IEnumerable<BTLNetCore6._0.Entity.CartItem>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int index = 0;
+}
+<header id="header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="navbar-top">
+                <div class="d-flex justify-content-between align-items-center">
+                    <ul class="navbar-top-left-menu">
+                        <li><a href="tel:0377222794">Số điện thoại: 0377222794</a></li>
+                        <li style="padding: 0 20px"><a href="https://www.facebook.com/">Facebook</a></li>
+                        <li><a href="https://www.youtube.com/">Youtube</a></li>
+
+                    </ul>
+                    <ul class="navbar-top-right-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="mdi mdi-magnify"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Sign in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <a class="navbar-brand" href="#">
+                            <img src="~/assets/images/logo.svg" alt="" />
+                        </a>
+                    </div>
+                    <div>
+                        <button class="navbar-toggler"
+                                type="button"
+                                data-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse justify-content-center collapse"
+                             id="navbarSupportedContent">
+                            <ul class="navbar-nav d-lg-flex justify-content-between align-items-center">
+                                <li>
+                                    <button class="navbar-close">
+                                        <i class="mdi mdi-close"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <a>Trang chủ</a>
+                                </li>
+                                <li>
+                                    <a>Giới thiệu</a>
+                                </li>
+                                <li>
+                                    <a>Đặt câu hỏi</a>
+                                </li>
+                                <li>
+                                    <a>Về chúng tôi</a>
+                                </li>
+                                <li>
+                                    <a>Blog</a>
+                                </li>
+                                <li>
+                                    <a>Thông tin</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="social-media">
+                        <li>
+                            <a href="#">
+                                <i class="mdi mdi-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="mdi mdi-youtube"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="mdi mdi-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div style="height: 1000px">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Hình ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá tiền</th>
+                <th>Tổng tiền</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @(index++)
+                    </td>
+                    <td>
+                        <img src="@item.hinhanh" width="100px" />
+                    </td>
+                    <td>
+                        <h5>@item.tieude</h5>
+                    </td>
+                    <td>
+                        <p>@item.gia</p>
+                    </td>
+                    @*<td>
+                        <input type="text" value="@item.soluong" />
+                    </td>*@
+                    <td>
+                        <p>@item.tonggia</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <a asp-action="thanhtoan" asp-controller="Cart">
+          Thanh toán
+        </a>
+    </div>
+    
+</div>
+
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <img src="~/assets/images/logo.svg" class="footer-logo" alt="" />
+                    <h5 class="font-weight-normal mt-4 mb-5">
+                        Newspaper is your news, entertainment, music fashion website. We
+                        provide you with the latest breaking news and videos straight from
+                        the entertainment industry.
+                    </h5>
+                    <ul class="social-media mb-3">
+                        <li>
+                            <a href="#">
+                                <i class="mdi mdi-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="mdi mdi-youtube"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="mdi mdi-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="font-weight-bold mb-3">RECENT POSTS</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="footer-border-bottom pb-2">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="~/assets/images/dashboard/home_1.jpg"
+                                             alt="thumb"
+                                             class="img-fluid" />
+                                    </div>
+                                    <div class="col-9">
+                                        <h5 class="font-weight-600">
+                                            Cotton import from USA to soar was American traders
+                                            predict
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="footer-border-bottom pb-2 pt-2">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="~/assets/images/dashboard/home_2.jpg"
+                                             alt="thumb"
+                                             class="img-fluid" />
+                                    </div>
+                                    <div class="col-9">
+                                        <h5 class="font-weight-600">
+                                            Cotton import from USA to soar was American traders
+                                            predict
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="~/assets/images/dashboard/home_3.jpg"
+                                             alt="thumb"
+                                             class="img-fluid" />
+                                    </div>
+                                    <div class="col-9">
+                                        <h5 class="font-weight-600 mb-3">
+                                            Cotton import from USA to soar was American traders
+                                            predict
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <h3 class="font-weight-bold mb-3">CATEGORIES</h3>
+                    <div class="footer-border-bottom pb-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 font-weight-600">Magazine</h5>
+                            <div class="count">1</div>
+                        </div>
+                    </div>
+                    <div class="footer-border-bottom pb-2 pt-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 font-weight-600">Business</h5>
+                            <div class="count">1</div>
+                        </div>
+                    </div>
+                    <div class="footer-border-bottom pb-2 pt-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 font-weight-600">Sports</h5>
+                            <div class="count">1</div>
+                        </div>
+                    </div>
+                    <div class="footer-border-bottom pb-2 pt-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 font-weight-600">Arts</h5>
+                            <div class="count">1</div>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 font-weight-600">Politics</h5>
+                            <div class="count">1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                        <div class="fs-14 font-weight-600">
+                            © 2020  <a href="https://www.bootstrapdash.com/" target="_blank" class="text-white"> BootstrapDash</a>. All rights reserved.
+                        </div>
+                        <div class="fs-14 font-weight-600">
+                            Handcrafted by <a href="https://www.bootstrapdash.com/" target="_blank" class="text-white">BootstrapDash</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

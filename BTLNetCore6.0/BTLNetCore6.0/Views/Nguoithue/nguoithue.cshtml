@@ -1,0 +1,66 @@
+﻿@model X.PagedList.IPagedList<BTLNetCore6._0.Models.Ogep>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "nguoithue";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div style="width: 100vw; height: auto; padding: 0 50px">
+        <div style="width: 100%; text-align: center; margin: 50px 0; color: yellow">
+            <h1>Tìm Người Ở Ghép, Tìm Nam Ở Ghép, Tìm Nữ Ở Ghép, Mới Nhất 2023</h1>
+        </div>
+        <div>
+            <div>
+                <div style="width: 100%; text-align: left; margin: 50px 0;">
+                    <h1>Danh sách tin đăng</h1>
+                </div>
+                <div style ="height: 500px; width: 100%">
+                    <div>
+                        @foreach(var item in Model)
+                        {
+                            string url = $"/thongtin/{item.Tieude}-{item.Id}.html";
+                            <div style="display: flex; width: 1200px; height: 300px; border-top: 1px solid blue; padding: 20px 0">
+                                <div>
+                                    <a href="@url">
+                                        <img style="height: 300px" src="@item.Hinhanh" />
+                                    </a>
+                                    
+                                </div>
+                                <div>
+                                    <div style="margin: 0 50px;  overflow: scroll; height: 200px;">
+                                        <h1 style="color: blue">@item.Tieude</h1>
+                                        <h5>Địa chỉ: @item.Diachi</h5>
+                                        <h6>Thời gian: @item.Thoigian</h6>
+                                        <p>Lượt xem: @item.Clicks</p>
+                                        <p>@item.Noidung</p>
+
+                                    </div>
+                                    <div>
+                                        <h3 style="color: lawngreen">Giá: @item.Gia Đ</h3>
+                                        @if(item.Trangthai == 1)
+                                        {
+                                            <h3 style="color: cornflowerblue">Trạng thái: Còn trống</h3>
+                                        }
+                                        else
+                                        {
+                                            <h3 style="color: red">Hết</h3>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    @*"page => Url.Action" nghĩa là page hiện tại trỏ đến Url.Action() để sinh ra 1 Url, sẽ chuyền vào 3 tham số cho Url này là:
+                    Tham số đầu tiên: Tên của phương thức trong lớp controller
+                    Tham số thứ 2 là: Tên của controller chứa phương thức đấy
+                    Tham số thứ 3 là: Chính là Root page của nó (page = page) nghĩa là tham số page chính là giá trị page nhập ở trên Url
+                    *@
+                    @Html.PagedListPager(Model, page => Url.Action("nguoithue", "Nguoithue", new {page = page}))
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

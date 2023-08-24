@@ -1,0 +1,98 @@
+﻿@model BTLNetCore6._0.Models.Tintuc
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
+
+
+<div class="row" style="margin-left: 100px">
+    <div style="width: 100%">
+        <h1>Create</h1>
+
+        <h4>Tintuc</h4>
+    </div>
+    <hr />
+    <div>
+        <div class="col-md-4" style="width: 100%">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Tieude" class="control-label"></label>
+                    <input asp-for="Tieude" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Tieude" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Noidung" class="control-label"></label>
+                    <input asp-for="Noidung" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Noidung" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sdt" class="control-label"></label>
+                    <input asp-for="Sdt" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Sdt" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hinhanh" class="control-label"></label>
+                    <input asp-for="Hinhanh" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Hinhanh" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LoaitinId" class="control-label"></label>
+                    <select asp-for="LoaitinId" class="form-control" style="width: 500px" asp-items="ViewBag.LoaitinId"></select>
+                </div>
+                @*<div class="form-group">
+                    <label asp-for="TaikhoanId" class="control-label"></label>
+                    <select asp-for="TaikhoanId" class="form-control" style="width: 500px" asp-items="ViewBag.TaikhoanId"></select>
+                </div>*@
+                <div class="form-group">
+                    <label asp-for="TaikhoanId" class="control-label"></label>
+                    <input asp-for="TaikhoanId" type="text" value="@userId" class="form-control" style="width: 500px" readonly />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ngaytao" class="control-label"></label>
+                    <input asp-for="Ngaytao" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Ngaytao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Clicks" class="control-label"></label>
+                    <input asp-for="Clicks" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Clicks" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Guixe" class="control-label"></label>
+                    <input asp-for="Guixe" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Guixe" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Anhnguoidangs" class="control-label"></label>
+                    <input asp-for="Anhnguoidangs" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Anhnguoidangs" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tennguoidang" class="control-label"></label>
+                    <input asp-for="Tennguoidang" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Tennguoidang" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gia" class="control-label"></label>
+                    <input asp-for="Gia" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Gia" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+
+    
+
+
+</div>

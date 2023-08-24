@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BTLNetCore6._0.Models.Sanpham>
+
+@{
+    ViewData["Title"] = "hienthi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    
+    @foreach(var item in Model)
+    {
+        <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.Id">
+        <div>
+            <div>
+                <img src="@item.Hinhanh" />
+            </div>
+            <div>
+                <h5>@item.Tieude</h5>
+            </div>
+            <div>
+                <p>@item.Noidung</p>
+            </div>
+            <div>
+                <input name="soluong" type="number" />
+            </div>
+            <div>
+                <button type="submit">Add To Cart</button>
+            </div>
+        </div>
+        </form>
+    }
+    
+</div>

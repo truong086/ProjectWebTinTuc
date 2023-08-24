@@ -1,0 +1,51 @@
+﻿@model List<BTLNetCore6._0.Models.Tintuc>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    List<Taikhoan> taikhoanList = ViewBag.khachhang;
+    List<OrderDetai> doanhthu = ViewBag.doanhthu;
+    var tong = 0;
+    var tinhtien = 0;
+}
+
+
+<div style="text-align: center; margin: 100px 30px; width: 100%; height: auto;">
+    <div>
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                    <th><p style="font-weight: bold; font-size: 25px; color: red">PHÒNG TRỌ ĐẶT NHIỀU NHẤT</p></th>
+                    <th><p style="font-weight: bold; font-size: 25px; color: red">KHÁCH HÀNG ĐẶT NHIỀU NHÂT</p></th>
+                    <th><p style="font-weight: bold; font-size: 25px; color: red">TỔNG DOANH THU</p></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @foreach (var item in Model)
+                        {
+                            <p>@item.Tieude</p>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var item in taikhoanList)
+                        {
+                            <p>@item.Fullname</p>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var item in doanhthu)
+                        {
+
+
+                            tinhtien += (int)item.Tongtien;
+                            tong += tinhtien;
+
+                        }
+                        <p>Tổng doanh thu: @tong VNĐ</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

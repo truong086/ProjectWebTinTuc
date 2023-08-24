@@ -1,0 +1,46 @@
+﻿@model BTLNetCore6._0.Models.Doituong
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="margin-left: 100px">
+    <div style="width: 100%">
+        <h1>Create</h1>
+
+        <h4>Đối tượng</h4>
+    </div>
+    <hr />
+    <div>
+        <div class="col-md-4" style="width: 100%">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Ten" class="control-label"></label>
+                    <input asp-for="Ten" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Ten" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ngaythem" class="control-label"></label>
+                    <input asp-for="Ngaythem" class="form-control" style="width: 500px" />
+                    <span asp-validation-for="Ngaythem" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+
+
+
+
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

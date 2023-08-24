@@ -1,0 +1,37 @@
+﻿@model BTLNetCore6._0.Models.Loaitin
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="margin-left: 100px">
+    <div style="width: 100%">
+        <h1>Thông tin chi tiết</h1>
+    </div>
+
+    <div style="margin-top: -300px">
+        <h4>Loại tin tức</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Ten)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Ten)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Ngaytao)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Ngaytao)
+            </dd>
+        </dl>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+    </div>
+
+
+</div>

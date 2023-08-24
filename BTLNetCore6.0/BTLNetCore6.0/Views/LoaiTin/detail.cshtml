@@ -1,0 +1,115 @@
+﻿@model BTLNetCore6._0.Models.Tintuc
+@{
+    ViewData["Title"] = "detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Tintuc> lienquan = ViewBag.lienquans;
+}
+
+
+<div>
+    <div class="class1" style="margin-top: 300px; width: 100%; display: flex; padding: 50px 50px; text-align: center">
+
+            <div class="class2" style="width: 1600px; display: flex">
+                <div>
+                    <a>
+                        <img width="500px" src="@Model.Hinhanh" />
+                    </a>
+                </div>
+                <div>
+                <div style="text-align: center">
+                    <h5>@Model.Tieude</h5>
+                </div>
+                <div>
+                    <p>@Model.Noidung</p>
+                </div>
+                <div>
+                    <h3>Giá thuê: @Model.Gia VNĐ</h3>
+                </div>
+                <div>
+                    <h3>Tiền điện nước: @Model.Guixe VNĐ</h3>
+                </div>
+                <div>
+                    <h3>Tiền rác: 30.0000 VNĐ</h3>
+                </div>
+                <div>
+                    <a href="tel:@Model.Sdt" class="link-info">Liên hệ người bán</a>
+                </div>
+                </div>
+            </div>
+
+            
+
+    </div>
+    <div style="display: flex; width: 100%; height: auto">
+        <div class="class2" style="width: 550px; height: 300px; margin: 100px 20px; border-radius: 20px; background-color: yellow; text-align: center">
+            <div>
+                <h2>
+                    Liên hệ người bán
+                </h2>
+                <a>
+                    <img src="@Model.Anhnguoidangs" width="150px" />
+                </a>
+                <h5>
+                    @Model.Sdt
+                </h5>
+            </div>
+            <div style="text-align: center">
+                <button class="btn btn-success">Facebook</button>
+            </div>
+            <div>
+                <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Id">Thanh toán</a>
+            </div>
+        </div>
+        <div style="margin: 50px 100px">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tên người bán</th>
+                        <th>Số điện thoại</th>
+                        <th>Hình ảnh</th>
+                        <th>Tiêu đề</th>
+                        <th>Giá thuê</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Tennguoidang</td>
+                        <td>@Model.Sdt</td>
+                        <td><img src="@Model.Hinhanh" width="100px" /></td>
+                        <td>@Model.Tieude</td>
+                        <td>@Model.Gia VNĐ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div style="margin: 20px 50px"><h5>Bài viết liên quan</h5></div>
+    <div>
+        <div style="display: flex">
+            @foreach (var item in lienquan)
+            {
+                string url = $"{item.Tieude}-{item.Id}.html";
+                <div class="class2" style="width: 600px; margin: 0 50px">
+                    <div>
+
+                        <a href="@url">
+                            <img width="300px" src="@item.Hinhanh" />
+                        </a>
+                    </div>
+                    <div style="text-align: center">
+                        <h5>@item.Tieude</h5>
+                    </div>
+                    <div>
+                        <p>@item.Noidung</p>
+                    </div>
+                    <div>
+                        <a href="tel:@item.Sdt" class="link-info">Liên hệ người bán</a>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

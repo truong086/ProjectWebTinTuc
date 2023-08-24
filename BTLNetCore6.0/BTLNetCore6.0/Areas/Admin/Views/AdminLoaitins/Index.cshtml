@@ -1,0 +1,76 @@
+﻿@model X.PagedList.IPagedList<BTLNetCore6._0.Models.Loaitin>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row" style="margin-left: 100px">
+    <div style="width: 100%">
+        <h1>Quản lý loại tin tức</h1>
+
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+
+        <div>
+            <form asp-action="Index" method="get" class="form-inline">
+                <label>Nhập thông tin tìm kiếm</label>
+                <input type="text" name="name" />
+                <button type="submit">Tìm kiếm</button>
+            </form>
+
+            @*<form asp-action="Index" method="get" asp-controller="AdminTintucs">
+                <select asp-items="ViewBag.listLoaTin" name="loaitinId" onchange="forms[0].submit()">
+                    <option value="0">Danh sach</option>
+                </select>
+            </form>*@
+        </div>
+    </div>
+
+
+    <div style="margin-top: -300px">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Tên
+                    </th>
+                    <th>
+                        Ngày tạo
+                    </th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Ten
+                        </td>
+                        <td>
+                            @item.Ngaytao
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            @*"page => Url.Action" nghĩa là page hiện tại trỏ đến Url.Action() để sinh ra 1 Url, sẽ chuyền vào 3 tham số cho Url này là:
+            Tham số đầu tiên: Tên của phương thức trong lớp controller
+            Tham số thứ 2 là: Tên của controller chứa phương thức đấy
+            Tham số thứ 3 là: Chính là Root page của nó (page = page) nghĩa là tham số page chính là giá trị page nhập ở trên Url
+            *@
+            @Html.PagedListPager(Model, page => Url.Action("Index", "AdminLoaitins", new {page = page}))
+        </div>
+
+    </div>
+</div>

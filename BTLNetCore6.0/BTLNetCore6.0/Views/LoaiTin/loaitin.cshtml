@@ -1,0 +1,80 @@
+﻿@model X.PagedList.IPagedList<BTLNetCore6._0.Models.Tintuc>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "loaitin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var loaitin = ViewBag.OneLoaiTin;
+    List<OrderDetai> listOrderDetails = ViewBag.orderDetails;
+}
+
+<div style="margin: 200px 0">
+    <div style="margin: 100px 50px">
+        <h1>@loaitin.Ten</h1>
+    </div>
+    <div style="margin: 30px 50px">
+        <form asp-action="loaitin" method="get">
+            <div class="form-group">
+                <label class="control-label">Tìm kiếm</label>
+                <input class="form-control" style="width: 500px" type="text" name="name" />
+            </div>
+            <input type="submit" class="btn btn-success" value="Gửi" />
+        </form>
+    </div>
+    <div class="class1" style="display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%; padding: 50px 50px">
+        @foreach(var item in Model)
+        {
+            string url = $"/{item.Tieude}-{item.Id}.html";
+            foreach(var items in listOrderDetails)
+            {
+                if(item.Id == items.SanphamId)
+                {
+                    <div class="class2" style="width: 30%">
+                        <div>
+                            <a href="@url">
+                                <img width="300px" src="@item.Hinhanh" />
+                            </a>
+                        </div>
+                        <div style="text-align: center">
+                            <h5>@item.Tieude</h5>
+                        </div>
+                        <div>
+                            <p>@item.Noidung</p>
+                        </div>
+                        <div>
+                            <p style="color:red; font-weight: bold;">Đã thuê</p>
+                        </div>
+                    </div>
+                    break;
+                }
+                else
+                {
+                    <div class="class2" style="width: 30%">
+                        <div>
+                            <a href="@url">
+                                <img width="300px" src="@item.Hinhanh" />
+                            </a>
+                        </div>
+                        <div style="text-align: center">
+                            <h5>@item.Tieude</h5>
+                        </div>
+                        <div>
+                            <p>@item.Noidung</p>
+                        </div>
+                    </div>
+                    break;
+                }
+
+            }
+            
+        }
+        
+    </div>
+    @*"page => Url.Action" nghĩa là page hiện tại trỏ đến Url.Action() để sinh ra 1 Url, sẽ chuyền vào 3 tham số cho Url này là:
+    Tham số đầu tiên: Tên của phương thức trong lớp controller
+    Tham số thứ 2 là: Tên của controller chứa phương thức đấy
+    Tham số thứ 3 là: Chính là Root page của nó (page = page) nghĩa là tham số page chính là giá trị page nhập ở trên Url
+    *@
+    @Html.PagedListPager(Model, page => Url.Action("loaitin", "LoaiTin", new {page = page}))
+</div>
+
